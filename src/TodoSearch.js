@@ -1,3 +1,3 @@
 export const TodoSearch = () => {
-	return <input placeholder="Cortar cebolla"></input>;
+	return <input className="form-control" placeholder="Cortar cebolla"></input>;
 };

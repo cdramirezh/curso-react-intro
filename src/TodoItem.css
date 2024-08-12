@@ -1,0 +1,16 @@
+.todo__item {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+}
+
+.todo__check {
+	border: 0;
+	padding: 4px;
+	background: unset;
+	color: green;
+}
+
+.todo__check i {
+	height: 16px;
+}

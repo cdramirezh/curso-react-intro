@@ -1,0 +1,10 @@
+.todo__app {
+	height: 100%;
+
+	display: grid;
+	gap: 1rem;
+	justify-content: center;
+	align-content: start;
+
+	background-color: lightgray;
+}
