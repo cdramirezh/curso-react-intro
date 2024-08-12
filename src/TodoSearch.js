@@ -1,3 +1,8 @@
 export const TodoSearch = () => {
-	return <input className="form-control" placeholder="Cortar cebolla"></input>;
+	const handleChange = event => {
+		console.log(event.target.value);
+	};
+	return (
+		<input className="form-control" placeholder="Cortar cebolla" onChange={handleChange}></input>
+	);
 };
