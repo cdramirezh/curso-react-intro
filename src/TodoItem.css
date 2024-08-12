@@ -11,6 +11,14 @@ li.todo__item {
 	color: green;
 }
 
+.todo__item--active .todo__check i {
+	color: black;
+}
+
+.todo__item--active span {
+	text-decoration: line-through;
+}
+
 .todo__check i {
 	height: 16px;
 }

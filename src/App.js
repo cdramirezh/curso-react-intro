@@ -3,7 +3,7 @@ import { TodoCounter } from "./TodoCounter";
 import { TodoItem } from "./TodoItem";
 import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
-import './App.css'
+import "./App.css";
 
 function App() {
 	return (
@@ -14,6 +14,7 @@ function App() {
 				{[1, 2, 3].map(i => (
 					<TodoItem key={i} />
 				))}
+				<TodoItem completed={true} />
 			</TodoList>
 			<CreateTodoButton />
 		</div>
