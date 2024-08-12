@@ -1,4 +1,4 @@
-.todo__item {
+li.todo__item {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
 	align-items: center;
