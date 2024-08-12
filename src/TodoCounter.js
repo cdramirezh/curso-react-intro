@@ -1,3 +1,5 @@
+import "./TodoCounter.css";
+
 export const TodoCounter = props => (
 	<h1>
 		Completaste {props.completed} de {props.total} ToDos
