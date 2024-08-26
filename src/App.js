@@ -18,13 +18,33 @@ function App() {
 		todo.text.toLowerCase().includes(searchValue.toLowerCase())
 	);
 
+	const completeTodo = id => {
+		const completedTodoIndex = todos.findIndex(todo => todo.id === id);
+		const newTodos = [...todos];
+		newTodos[completedTodoIndex].completed = true;
+		setTodos(newTodos);
+	};
+
+	const deleteTodo = id => {
+		const deletedTodoIndex = todos.findIndex(todo => todo.id === id);
+		const newTodos = [...todos];
+		newTodos.splice(deletedTodoIndex, 1);
+		setTodos(newTodos);
+	};
+
 	return (
 		<div className="container todo__app">
 			<TodoCounter completed={completedTodos} total={totalTodos} />
 			<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 			<TodoList>
-				{searchedTodos.map(({ text, completed }, i) => (
-					<TodoItem key={i} text={text} completed={completed} />
+				{searchedTodos.map(({ text, completed, id }, i) => (
+					<TodoItem
+						key={i}
+						text={text}
+						completed={completed}
+						onComplete={() => completeTodo(id)}
+						onDelete={() => deleteTodo(id)}
+					/>
 				))}
 			</TodoList>
 			<CreateTodoButton setTodos={setTodos} />

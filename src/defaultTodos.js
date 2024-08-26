@@ -1,7 +1,7 @@
 export const defaultTodos = [
-	{ text: "Cortar cebolla", completed: true },
-	{ text: "Tomar leche", completed: true },
-	{ text: "Llorar con la llorona", completed: false },
-	{ text: "La la la", completed: false },
-	{ text: "Usar estados", completed: true },
+	{ id: 1, text: "Cortar cebolla", completed: true },
+	{ id: 2, text: "Tomar leche", completed: true },
+	{ id: 3, text: "Llorar con la llorona", completed: false },
+	{ id: 4, text: "La la la", completed: false },
+	{ id: 5, text: "Usar estados", completed: true },
 ];
