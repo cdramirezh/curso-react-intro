@@ -1,7 +1,9 @@
 import "./TodoCounter.css";
 
-export const TodoCounter = props => (
-	<h1>
-		Completaste {props.completed} de {props.total} ToDos
-	</h1>
-);
+export const TodoCounter = ({ completed, total }) => {
+	return (
+		<h1>
+			{completed === total ? "¡Felicitaciones!" : `Completaste ${completed} de ${total} ToDos`}
+		</h1>
+	);
+};
