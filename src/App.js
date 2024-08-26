@@ -35,6 +35,7 @@ function App() {
 	return (
 		<div className="container todo__app">
 			<TodoCounter completed={completedTodos} total={totalTodos} />
+			<CreateTodoButton setTodos={setTodos} />
 			<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 			<TodoList>
 				{searchedTodos.map(({ text, completed, id }, i) => (
@@ -47,7 +48,6 @@ function App() {
 					/>
 				))}
 			</TodoList>
-			<CreateTodoButton setTodos={setTodos} />
 		</div>
 	);
 }
