@@ -14,12 +14,16 @@ function App() {
 	const completedTodos = todos.reduce((acc, task) => (task.completed ? acc + 1 : acc), 0);
 	const totalTodos = todos.length;
 
+	const searchedTodos = todos.filter(todo =>
+		todo.text.toLowerCase().includes(searchValue.toLowerCase())
+	);
+
 	return (
 		<div className="container todo__app">
 			<TodoCounter completed={completedTodos} total={totalTodos} />
 			<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 			<TodoList>
-				{todos.map(({ text, completed }, i) => (
+				{searchedTodos.map(({ text, completed }, i) => (
 					<TodoItem key={i} text={text} completed={completed} />
 				))}
 			</TodoList>
