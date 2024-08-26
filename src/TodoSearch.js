@@ -1,8 +1,16 @@
+import { useState } from "react";
+
 export const TodoSearch = () => {
+	const [searchValue, setSearchValue] = useState("");
 	const handleChange = event => {
-		console.log(event.target.value);
+		setSearchValue(event.target.value);
 	};
 	return (
-		<input className="form-control" placeholder="Cortar cebolla" onChange={handleChange}></input>
+		<input
+			className="form-control"
+			placeholder="Cortar cebolla"
+			value={searchValue}
+			onChange={handleChange}
+		></input>
 	);
 };
