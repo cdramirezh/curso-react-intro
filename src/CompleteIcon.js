@@ -1,3 +1,5 @@
 import { TodoIcon } from "./TodoIcon";
 
-export const CompleteIcon = () => <TodoIcon type={"check"} />;
+export const CompleteIcon = ({ completed }) => (
+	<TodoIcon type={"check"} color={completed ? "green" : "gray"} />
+);

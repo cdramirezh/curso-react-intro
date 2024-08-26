@@ -4,21 +4,12 @@ li.todo__item {
 	align-items: center;
 }
 
-.todo__check {
+.todo__btn-container {
 	border: 0;
 	padding: 4px;
 	background: unset;
-	color: green;
 }
 
-.todo__item--active .todo__check i {
-	color: black;
-}
-
-.todo__item--active span {
+.todo__item--active>span {
 	text-decoration: line-through;
-}
-
-.todo__check i {
-	height: 16px;
 }

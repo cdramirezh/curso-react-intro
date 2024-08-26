@@ -1,0 +1,9 @@
+.icon-container {
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+}
+
+.icon-container-delete:hover svg {
+	fill: red
+}
