@@ -6,11 +6,22 @@ import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
 import "./App.css";
 
-function App() {
-	let parsedTodos = JSON.parse(localStorage.getItem("TODOS_V1")) || [];
+const useStateLocalStorage = (itemKey, initialValue) => {
+	let parsedItem = JSON.parse(localStorage.getItem(itemKey)) || initialValue;
 
+	const [items, setItems] = useState(parsedItem);
+
+	const saveItem = newItem => {
+		localStorage.setItem(itemKey, JSON.stringify(newItem));
+		setItems(newItem);
+	};
+
+	return [items, saveItem];
+};
+
+function App() {
 	const [searchValue, setSearchValue] = useState("");
-	const [todos, setTodos] = useState(parsedTodos);
+	const [todos, saveTodos] = useStateLocalStorage("TODOS_V1", []);
 
 	const completedTodos = todos.reduce((acc, task) => (task.completed ? acc + 1 : acc), 0);
 	const totalTodos = todos.length;
@@ -18,11 +29,6 @@ function App() {
 	const searchedTodos = todos.filter(todo =>
 		todo.text.toLowerCase().includes(searchValue.toLowerCase())
 	);
-
-	const saveTodos = newTodos => {
-		localStorage.setItem("TODOS_V1", JSON.stringify(newTodos));
-		setTodos(newTodos);
-	};
 
 	const completeTodo = id => {
 		const completedTodoIndex = todos.findIndex(todo => todo.id === id);
@@ -41,7 +47,7 @@ function App() {
 	return (
 		<div className="container todo__app">
 			<TodoCounter completed={completedTodos} total={totalTodos} />
-			<CreateTodoButton setTodos={setTodos} />
+			<CreateTodoButton setTodos={saveTodos} />
 			<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 			<TodoList>
 				{searchedTodos.map(({ text, completed, id }, i) => (
