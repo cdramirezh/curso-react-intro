@@ -4,12 +4,13 @@ import { TodoCounter } from "./TodoCounter";
 import { TodoItem } from "./TodoItem";
 import { TodoList } from "./TodoList";
 import { TodoSearch } from "./TodoSearch";
-import { defaultTodos } from "./defaultTodos";
 import "./App.css";
 
 function App() {
+	let parsedTodos = JSON.parse(localStorage.getItem("TODOS_V1")) || [];
+
 	const [searchValue, setSearchValue] = useState("");
-	const [todos, setTodos] = useState(defaultTodos);
+	const [todos, setTodos] = useState(parsedTodos);
 
 	const completedTodos = todos.reduce((acc, task) => (task.completed ? acc + 1 : acc), 0);
 	const totalTodos = todos.length;
@@ -18,18 +19,23 @@ function App() {
 		todo.text.toLowerCase().includes(searchValue.toLowerCase())
 	);
 
+	const saveTodos = newTodos => {
+		localStorage.setItem("TODOS_V1", JSON.stringify(newTodos));
+		setTodos(newTodos);
+	};
+
 	const completeTodo = id => {
 		const completedTodoIndex = todos.findIndex(todo => todo.id === id);
 		const newTodos = [...todos];
 		newTodos[completedTodoIndex].completed = true;
-		setTodos(newTodos);
+		saveTodos(newTodos);
 	};
 
 	const deleteTodo = id => {
 		const deletedTodoIndex = todos.findIndex(todo => todo.id === id);
 		const newTodos = [...todos];
 		newTodos.splice(deletedTodoIndex, 1);
-		setTodos(newTodos);
+		saveTodos(newTodos);
 	};
 
 	return (
