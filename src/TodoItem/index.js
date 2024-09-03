@@ -1,5 +1,5 @@
-import { CompleteIcon } from "./CompleteIcon";
-import { DeleteIcon } from "./DeleteIcon";
+import { CompleteIcon } from "../TodoIcon/Icons/CompleteIcon";
+import { DeleteIcon } from "../TodoIcon/Icons/DeleteIcon";
 import "./TodoItem.css";
 
 export const TodoItem = ({ completed, text, onComplete, onDelete }) => {
