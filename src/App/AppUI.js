@@ -3,8 +3,8 @@ import { TodoCounter } from "../TodoCounter";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoError } from "../TodoError";
 import { TodoItem } from "../TodoItem";
+import { TodoItemLoading } from "../TodoItemLoading";
 import { TodoList } from "../TodoList";
-import { TodoLoading } from "../TodoLoading";
 import { TodoSearch } from "../TodoSearch";
 import "./App.css";
 
@@ -25,7 +25,10 @@ export const AppUI = ({
 		<CreateTodoButton setTodos={saveTodos} />
 		<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 		<TodoList>
-			{loading && <TodoLoading />}
+			{loading &&
+				Array(4)
+					.fill()
+					.map((e, i) => <TodoItemLoading />)}
 			{!loading && error && <TodoError />}
 			{!loading && searchedTodos.length === 0 && <EmptyTodos />}
 			{!loading &&
