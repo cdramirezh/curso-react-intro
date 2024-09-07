@@ -1,0 +1,6 @@
+.btn-loader {
+	--size: 24px;
+	width: var(--size);
+	height: var(--size);
+	margin: 4px;
+}
