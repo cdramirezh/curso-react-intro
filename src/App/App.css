@@ -1,5 +1,6 @@
-.todo__app {
+.container.todo__app {
 	height: 100%;
+	max-width: 720px;
 
 	display: grid;
 	gap: 1rem;
