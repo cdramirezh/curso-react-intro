@@ -33,6 +33,6 @@ export const useStateLocalStorage = (itemKey, initialValue) => {
 		postItems(itemKey, newItem);
 		setItems(newItem);
 	};
-	console.dir({ items, saveItem, loading, error });
+
 	return { items, saveItem, loading, error };
 };
