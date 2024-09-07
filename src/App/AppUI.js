@@ -9,6 +9,8 @@ export const AppUI = ({
 	completeTodo,
 	completedTodos,
 	deleteTodo,
+	error,
+	loading,
 	saveTodos,
 	searchedTodos,
 	searchValue,
@@ -20,15 +22,20 @@ export const AppUI = ({
 		<CreateTodoButton setTodos={saveTodos} />
 		<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 		<TodoList>
-			{searchedTodos.map(({ text, completed, id }, i) => (
-				<TodoItem
-					key={i}
-					text={text}
-					completed={completed}
-					onComplete={() => completeTodo(id)}
-					onDelete={() => deleteTodo(id)}
-				/>
-			))}
+			{loading && <p>Cargando...</p>}
+			{!loading && error && <p>¡Error! 💥</p>}
+			{!loading && searchedTodos.length === 0 && <p>Crea un Todo</p>}
+			{!loading &&
+				!!searchedTodos.length &&
+				searchedTodos.map(({ text, completed, id }, i) => (
+					<TodoItem
+						key={i}
+						text={text}
+						completed={completed}
+						onComplete={() => completeTodo(id)}
+						onDelete={() => deleteTodo(id)}
+					/>
+				))}
 		</TodoList>
 	</div>
 );

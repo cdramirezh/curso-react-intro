@@ -4,7 +4,12 @@ import { AppUI } from "./AppUI";
 
 function App() {
 	const [searchValue, setSearchValue] = useState("");
-	const [todos, saveTodos] = useStateLocalStorage("TODOS_V1", []);
+	const {
+		items: todos,
+		saveItem: saveTodos,
+		loading,
+		error,
+	} = useStateLocalStorage("TODOS_V1", []);
 
 	const completedTodos = todos.reduce((acc, task) => (task.completed ? acc + 1 : acc), 0);
 	const totalTodos = todos.length;
@@ -32,6 +37,8 @@ function App() {
 			completeTodo={completeTodo}
 			completedTodos={completedTodos}
 			deleteTodo={deleteTodo}
+			error={error}
+			loading={loading}
 			saveTodos={saveTodos}
 			searchedTodos={searchedTodos}
 			searchValue={searchValue}
