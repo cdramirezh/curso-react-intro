@@ -28,7 +28,7 @@ export const AppUI = ({
 			{loading &&
 				Array(4)
 					.fill()
-					.map((e, i) => <TodoItemLoading />)}
+					.map((e, i) => <TodoItemLoading key={i} />)}
 			{!loading && error && <TodoError />}
 			{!loading && searchedTodos.length === 0 && <EmptyTodos />}
 			{!loading &&
