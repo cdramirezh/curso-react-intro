@@ -4,6 +4,10 @@ li.todo__item {
 	align-items: center;
 }
 
+li.todo__item {
+	border-radius: inherit;
+}
+
 .todo__btn-container {
 	border: 0;
 	padding: 4px;
