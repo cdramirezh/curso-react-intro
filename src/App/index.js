@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { useStateLocalStorage } from "./useLocalStorage";
-import { CreateTodoButton } from "../CreateTodoButton";
-import { TodoCounter } from "../TodoCounter";
-import { TodoItem } from "../TodoItem";
-import { TodoList } from "../TodoList";
-import { TodoSearch } from "../TodoSearch";
-import "./App.css";
+import { AppUI } from "./AppUI";
 
 function App() {
 	const [searchValue, setSearchValue] = useState("");
@@ -33,22 +28,16 @@ function App() {
 	};
 
 	return (
-		<div className="container todo__app">
-			<TodoCounter completed={completedTodos} total={totalTodos} />
-			<CreateTodoButton setTodos={saveTodos} />
-			<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-			<TodoList>
-				{searchedTodos.map(({ text, completed, id }, i) => (
-					<TodoItem
-						key={i}
-						text={text}
-						completed={completed}
-						onComplete={() => completeTodo(id)}
-						onDelete={() => deleteTodo(id)}
-					/>
-				))}
-			</TodoList>
-		</div>
+		<AppUI
+			completeTodo={completeTodo}
+			completedTodos={completedTodos}
+			deleteTodo={deleteTodo}
+			saveTodos={saveTodos}
+			searchedTodos={searchedTodos}
+			searchValue={searchValue}
+			setSearchValue={setSearchValue}
+			totalTodos={totalTodos}
+		/>
 	);
 }
 
