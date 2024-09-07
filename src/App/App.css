@@ -3,6 +3,6 @@
 
 	display: grid;
 	gap: 1rem;
-	justify-content: center;
+	justify-content: stretch;
 	align-content: start;
 }
