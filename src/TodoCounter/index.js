@@ -1,9 +1,13 @@
 import "./TodoCounter.css";
 
-export const TodoCounter = ({ completed, total }) => {
+export const TodoCounter = ({ completed, loading, total }) => {
 	return (
 		<h1>
-			{completed === total ? "¡Felicitaciones!" : `Completaste ${completed} de ${total} ToDos`}
+			{loading
+				? "Cargando ToDos..."
+				: completed === total
+				? "¡Felicitaciones!"
+				: `Completaste ${completed} de ${total} ToDos`}
 		</h1>
 	);
 };

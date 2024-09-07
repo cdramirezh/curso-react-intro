@@ -21,7 +21,7 @@ export const AppUI = ({
 	totalTodos,
 }) => (
 	<div className="container todo__app">
-		<TodoCounter completed={completedTodos} total={totalTodos} />
+		<TodoCounter completed={completedTodos} loading={loading} total={totalTodos} />
 		<CreateTodoButton setTodos={saveTodos} />
 		<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 		<TodoList>
