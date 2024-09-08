@@ -30,6 +30,7 @@ export const TodoForm = () => {
 						className="form-control"
 						placeholder="Acá va el texto de tu ToDo"
 						name="newTodo"
+						required
 					/>
 				</div>
 				<div className="modal-footer justify-content-between">
