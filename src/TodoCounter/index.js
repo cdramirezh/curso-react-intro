@@ -5,7 +5,7 @@ import "./TodoCounter.css";
 export const TodoCounter = () => {
 	const { completedTodos: completed, loading, totalTodos: total } = useContext(TodoContext);
 	return (
-		<h1>
+		<h1 className="todo__counter">
 			{loading
 				? "Cargando ToDos..."
 				: completed === total
