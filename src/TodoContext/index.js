@@ -33,12 +33,21 @@ export const TodoProvider = ({ children }) => {
 		saveTodos(newTodos);
 	};
 
+	const addTodo = newTodo => {
+		const newIndex = todos.length;
+		newTodo.id = newIndex;
+		const newTodos = [...todos];
+		newTodos.push(newTodo);
+		saveTodos(newTodos);
+	};
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const closeModal = () => setIsModalOpen(false);
 
 	return (
 		<TodoContext.Provider
 			value={{
+				addTodo,
 				closeModal,
 				completeTodo,
 				completedTodos,
