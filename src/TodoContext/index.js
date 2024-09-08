@@ -33,17 +33,23 @@ export const TodoProvider = ({ children }) => {
 		saveTodos(newTodos);
 	};
 
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const closeModal = () => setIsModalOpen(false);
+
 	return (
 		<TodoContext.Provider
 			value={{
+				closeModal,
 				completeTodo,
 				completedTodos,
 				deleteTodo,
 				error,
+				isModalOpen,
 				loading,
 				saveTodos,
 				searchedTodos,
 				searchValue,
+				setIsModalOpen,
 				setSearchValue,
 				totalTodos,
 			}}

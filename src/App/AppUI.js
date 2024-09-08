@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { CreateTodoButton } from "../CreateTodoButton";
+import { Modal } from "../Modal";
 import { TodoContext } from "../TodoContext";
 import { TodoCounter } from "../TodoCounter";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoError } from "../TodoError";
+import { TodoForm } from "../TodoForm";
 import { TodoItem } from "../TodoItem";
 import { TodoItemLoading } from "../TodoItemLoading";
 import { TodoList } from "../TodoList";
@@ -11,7 +13,8 @@ import { TodoSearch } from "../TodoSearch";
 import "./App.css";
 
 export const AppUI = () => {
-	const { completeTodo, deleteTodo, error, loading, searchedTodos } = useContext(TodoContext);
+	const { completeTodo, deleteTodo, error, isModalOpen, loading, searchedTodos } =
+		useContext(TodoContext);
 
 	return (
 		<div className="container todo__app">
@@ -37,6 +40,11 @@ export const AppUI = () => {
 						/>
 					))}
 			</TodoList>
+			{isModalOpen && (
+				<Modal>
+					<TodoForm />
+				</Modal>
+			)}
 		</div>
 	);
 };
