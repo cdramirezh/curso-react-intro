@@ -1,1 +1,1 @@
-export const EmptyTodos = () => <>Empty</>;
+export const EmptyTodos = () => <>Ningún ToDo coincide con la búsqueda</>;
