@@ -13,7 +13,7 @@ import { TodoSearch } from "../TodoSearch";
 import "./App.css";
 
 export const AppUI = () => {
-	const { completeTodo, deleteTodo, error, isModalOpen, loading, searchedTodos } =
+	const { completeTodo, deleteTodo, error, isModalOpen, loading, searchedTodos, totalTodos } =
 		useContext(TodoContext);
 
 	return (
@@ -27,7 +27,12 @@ export const AppUI = () => {
 						.fill()
 						.map((e, i) => <TodoItemLoading key={i} />)}
 				{!loading && error && <TodoError />}
-				{!loading && searchedTodos.length === 0 && <EmptyTodos />}
+				{!loading && totalTodos === 0 && (
+					<div className="alert alert-info" role="alert">
+						Crea tu primer ToDo
+					</div>
+				)}
+				{!loading && searchedTodos.length === 0 && totalTodos > 0 && <EmptyTodos />}
 				{!loading &&
 					!!searchedTodos.length &&
 					searchedTodos.map(({ text, completed, id }, i) => (
