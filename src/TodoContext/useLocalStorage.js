@@ -5,7 +5,12 @@ const delay = 1500;
 const getItems = key =>
 	new Promise(resolve => {
 		setTimeout(() => {
-			resolve(JSON.parse(localStorage.getItem(key)));
+			const items = JSON.parse(localStorage.getItem(key));
+			if (!items) {
+				localStorage.setItem(key, JSON.stringify([]));
+				resolve([]);
+			}
+			resolve(items);
 		}, delay);
 	});
 
