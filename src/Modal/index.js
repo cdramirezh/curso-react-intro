@@ -20,9 +20,10 @@ export const Modal = ({ children }) => {
 			role="dialog"
 			onClick={handleClickBackdrop}
 		>
-			<div className="modal-dialog modal-dialog-centered">{children}</div>
+			<div className="modal-dialog modal-dialog-centered" tabIndex="-1">
+				{children}
+			</div>
 		</div>,
-
 		document.getElementById("modal")
 	);
 };

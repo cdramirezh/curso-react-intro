@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { TodoContext } from "../TodoContext";
 import "./TodoForm.css";
 
 export const TodoForm = () => {
 	const { closeModal, addTodo } = useContext(TodoContext);
+	const inputRef = useRef();
 
 	const handleSubmit = event => {
 		event.preventDefault();
@@ -11,6 +12,12 @@ export const TodoForm = () => {
 		addTodo({ text: newTodoText, completed: false });
 		closeModal();
 	};
+
+	useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.focus();
+		}
+	}, []);
 
 	return (
 		<div className="todo__form modal-content">
@@ -31,6 +38,7 @@ export const TodoForm = () => {
 						placeholder="Acá va el texto de tu ToDo"
 						name="newTodo"
 						required
+						ref={inputRef}
 					/>
 				</div>
 				<div className="modal-footer justify-content-between">
